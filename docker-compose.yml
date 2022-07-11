@@ -12,11 +12,11 @@ services:
     volumes:
       - ./config:/config
       - gvm_data:/usr/local/var/lib
-      - gvm_db:/var/lib/postgresql/data
+      - gvm_psql:/var/lib/postgresql/data
     tty: true
 
 volumes:
   gvm_data:
     name: gvm_data
-  gvm_db:
-    name: gvm_db
+  gvm_psql:
+    name: gvm_psql
