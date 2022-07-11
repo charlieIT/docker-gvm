@@ -20,6 +20,7 @@ texlive-fonts-recommended
 texlive-latex-extra
 xml-twig-tools
 xsltproc
+openssh-server
 EOF
 } | xargs apt-get install -yq --no-install-recommends
 
