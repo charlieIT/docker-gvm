@@ -7,4 +7,4 @@ set -ueo pipefail
 #docker push isaudits/gvm:gvmd-20.8
 #docker push isaudits/gvm:gvm-20.8
 
-docker push isaudits/gvm
+docker push charlieit/gvm

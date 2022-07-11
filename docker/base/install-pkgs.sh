@@ -16,6 +16,7 @@ sudo
 rsync
 wget
 ssmtp
+openssh-server
 EOF
 } | xargs apt-get install -yq --no-install-recommends
 

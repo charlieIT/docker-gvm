@@ -4,17 +4,17 @@ COPY install-pkgs.sh /install-pkgs.sh
 
 RUN bash /install-pkgs.sh
 
-COPY --from=isaudits/gvm:build-21.4 /install/gvm_libs/ /usr/local/
-COPY --from=isaudits/gvm:build-21.4 /install/gvmd/bin/gvm-manage-certs /usr/local/bin/gvm-manage-certs
+COPY --from=charlieit/gvm:build-21.4 /install/gvm_libs/ /usr/local/
+COPY --from=charlieit/gvm:build-21.4 /install/gvmd/bin/gvm-manage-certs /usr/local/bin/gvm-manage-certs
 
 COPY root/ /
 
-ENV UPDATE_ON_START=false \
+ENV UPDATE_ON_START=true \
     SCHEDULED_UPDATES=false \
     GVM_USER="admin" \
     GVM_PASSWORD="admin" \
-    SLAVE_USER="scanner" \
-    SLAVE_PASSWORD="changethisdamnpassword" \
+    SLAVE_USER="remote" \
+    SLAVE_PASSWORD="remote" \
     GVMD_HOST="0.0.0.0" \
     GVMD_PORT="9391" \
     GVMD_MAXROWS="5000" \
