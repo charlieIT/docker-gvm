@@ -24,3 +24,7 @@ s6-setuidgid abc greenbone-feed-sync --type CERT
 sleep 5
 
 rm /usr/local/var/run/feed-update.lock || true
+
+s6-setuidgid abc greenbone-scapdata-sync --refresh
+s6-setuidgid abc greenbone-scapdata-sync --refresh-private
+s6-setuidgid abc greenbone-nvt-sync
