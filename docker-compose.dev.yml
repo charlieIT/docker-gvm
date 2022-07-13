@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:        
+  gvm:
+    image: charlieit/gvm:dev
+    hostname: gvm
+    container_name: gvm-dev
+    ports:
+      - "8443:9392"
+    env_file:
+      - ./config/local.env
+    volumes:
+      - ./config:/config
+      - gvm_data:/usr/local/var/lib
+      - gvm_db:/var/lib/postgresql/data
+    tty: true
+
+volumes:
+  gvm_data:
+    name: gvm_data
+  gvm_db:
+    name: gvm_db
