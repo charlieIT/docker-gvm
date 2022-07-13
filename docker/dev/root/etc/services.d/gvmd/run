@@ -5,7 +5,8 @@ echo "Attempting to migrate database and create default user"
 #s6-setuidgid abc gvmd gvm-manage-certs -q -a &> /dev/nul || true
 s6-setuidgid abc gvmd --migrate || true
 s6-setuidgid abc gvmd --create-user=${GVM_USER} --password=${GVM_PASSWORD} || true
-s6-setuidgid abc gvmd --create-user=remote --password=remote || true
+echo "Attempt to create service user"
+s6-setuidgid abc gvmd --create-user=${GVM_SERVICE_USER} --password=${GVM_SERVICE_PASSWORD} || true
 
 echo "Attempting to set max report rows to $GVMD_MAXROWS"
 s6-setuidgid abc gvmd --modify-setting 76374a7a-0569-11e6-b6da-28d24461215b --value $GVMD_MAXROWS || true
