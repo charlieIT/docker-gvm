@@ -12,10 +12,12 @@ COPY --from=charlieit/gvm:build-21.4 /install/gvmd/ /install/gsa/ /usr/local/
 #COPY --from=isaudits/gvm:gvm-11 /usr/local/share/gvm/gvmd/report_formats/ /usr/local/share/gvm/gvmd/report_formats/
 
 RUN echo "abc ALL=(ALL) NOPASSWD: /usr/local/sbin/gsad" >> /etc/sudoers
-RUN echo "socat UNIX:/usr/local/var/run/gvmd.sock -" >> /home/sock.sh
-RUN chmod +x /home/sock.sh
+RUN mkdir /home/$GVM_SERVICE_USER
+RUN echo $'#!/usr/bin/sh\nsocat UNIX:/usr/local/var/run/gvmd.sock -' > /home/$GVM_SERVICE_USER/sock.sh
+RUN chmod +x /home/$GVM_SERVICE_USER/sock.sh
 RUN service ssh start
-RUN useradd remote -s /home/sock.sh -g users
+RUN useradd $GVM_SERVICE_USER -s /home/$GVM_SERVICE_USER/sock.sh -g users
+RUN echo "$GVM_SERVICE_USER:$GVM_SERVICE_PASSWORD" | chpasswd
 
 COPY root/ /
 
