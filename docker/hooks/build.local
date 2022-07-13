@@ -18,3 +18,8 @@ docker build --build-arg VCS_REF="$(git rev-parse --short HEAD)" \
 docker build --build-arg VCS_REF="$(git rev-parse --short HEAD)" \
              --build-arg BUILD_DATE="$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
              -t charlieit/gvm:gvm-21.4 -t charlieit/gvm:latest docker/gvm/.
+
+# Dev 
+docker build --build-arg VCS_REF="$(git rev-parse --short HEAD)" \
+             --build-arg BUILD_DATE="$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+             -t charlieit/gvm:gvm-21.4-dev -t charlieit/gvm:dev dev/.
