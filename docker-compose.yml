@@ -6,17 +6,17 @@ services:
     hostname: gvm
     container_name: gvm
     ports:
-      - "8443:9392"
+      - "443:9392"
     env_file:
       - ./config/local.env
     volumes:
       - ./config:/config
       - gvm_data:/usr/local/var/lib
-      - gvm_psql:/var/lib/postgresql/data
+      - gvm_db:/var/lib/postgresql/data
     tty: true
 
 volumes:
   gvm_data:
     name: gvm_data
-  gvm_psql:
-    name: gvm_psql
+  gvm_db:
+    name: gvm_db
